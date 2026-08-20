@@ -128,9 +128,50 @@ class AccountRegistry:
     def add(self, account):
         self.accounts[account.account_number] = account
         self.account_list.append(account)
+
     def find(self, number):
         return self.accounts.get(number)
     def list_all(self):
         return self.account_list
+    def top_by_balance(self, n):
+        sorted_accounts = sorted(
+            self.account_list,
+            key=lambda a: a.balance,
+            reverse=True
+        )
+        return sorted_accounts[:n]
+    def binary_search(self, numbers, target):
+        left = 0
+        right = len(numbers) - 1
+        while left <= right:
+            mid = (left + right) // 2
 
-registry = AccountRegistry()
+            if numbers[mid] == target:
+                return mid
+            elif numbers[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return -1
+    def find_by_number(self, number):
+        sorted_numbers = sorted(self.accounts.keys())
+        index = self.binary_search(sorted_numbers, number)
+        if index == -1:
+            return None
+        return self.accounts[sorted_numbers[index]]
+
+    def total_transactions(self, number):
+        account = self.find_by_number(number)
+        if account is None:
+            return None
+
+        def calculate_total(history, index):
+            if index == len(history):
+                return 0
+            transaction = history[index]
+            return (
+                transaction["amount"]
+                + calculate_total(history, index + 1)
+            )
+        return calculate_total(account.history, 0)
