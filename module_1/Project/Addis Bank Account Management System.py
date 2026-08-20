@@ -1,4 +1,5 @@
 # Addis Bank - Account Management System
+from collections import deque
 class BankConfig:
     _instance = None
     def __new__(cls):
@@ -175,3 +176,32 @@ class AccountRegistry:
                 + calculate_total(history, index + 1)
             )
         return calculate_total(account.history, 0)
+
+class Branch:
+    def __init__(self, name):
+        self.name = name
+        self.accounts = []
+        self.children = []
+    def add_account(self, account):
+        self.accounts.append(account)
+    def add_child(self, branch):
+        self.children.append(branch)
+    def total_balance(self):
+        total = sum(account.balance for account in self.accounts)
+        for child in self.children:
+            total += child.total_balance()
+        return total
+
+def bfs(transfers, start):
+    visited = set()
+    queue = deque([start])
+    while queue:
+        current = queue.popleft()
+        if current in visited:
+            continue
+        visited.add(current)
+        for recipient in transfers.get(current, []):
+            if recipient not in visited:
+                queue.append(recipient)
+    visited.remove(start)
+    return list(visited)
