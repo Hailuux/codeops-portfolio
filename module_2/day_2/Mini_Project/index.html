@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservations | Habesha Eatery</title>
+  <meta
+    name="description"
+    content="Reserve a table at Habesha Eatery."
+  >
+</head>
+
+<body>
+
+  <header>
+    <h1>Habesha Eatery</h1>
+<nav aria-label="Main navigation">
+  <ul>
+    <li><a href="index.html">Reservations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+  </header>
+
+  <main>
+<section aria-labelledby="reservation-heading">
+  <h2 id="reservation-heading">Make a Reservation</h2>
+
+  <form action="/reserve" method="post">
+    <p>
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+      >
+    </p>
+    <p>
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+      >
+    </p>
+    <p>
+      <label for="phone">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        pattern="\+251[0-9]{9}"
+        placeholder="+251912345678"
+        required
+      >
+    </p>
+    <p>
+      <label for="guests">Number of Guests</label>
+      <input
+        type="number"
+        id="guests"
+        name="guests"
+        min="1"
+        max="20"
+        required
+      >
+    </p>
+    <p>
+      <label for="date">Reservation Date</label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        required
+      >
+    </p>
+    <p>
+      <label for="time">Reservation Time</label>
+      <input
+        type="time"
+        id="time"
+        name="time"
+        required
+      >
+    </p>
+
+    <button type="submit">Reserve Table</button>
+
+  </form>
+</section>
+
+<section aria-labelledby="menu-heading">
+  <h2 id="menu-heading">Our Menu</h2>
+  <table>
+    <caption>Habesha Eatery Menu and Prices</caption>
+
+    <thead>
+      <tr>
+        <th scope="col">Dish</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price ETB</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Doro Wot</td>
+        <td>Spicy Ethiopian chicken stew served with injera.</td>
+        <td>450</td>
+      </tr>
+
+      <tr>
+        <td>Tibs</td>
+        <td>Sautéed beef with onions, peppers, and spices.</td>
+        <td>500</td>
+      </tr>
+
+      <tr>
+        <td>Shiro</td>
+        <td>Traditional chickpea stew served with injera.</td>
+        <td>300</td>
+      </tr>
+
+      <tr>
+        <td>Kitfo</td>
+        <td>Seasoned minced beef served with traditional sides.</td>
+        <td>550</td>
+      </tr>
+
+      <tr>
+        <td>Vegetarian Combo</td>
+        <td>A selection of Ethiopian vegetarian dishes.</td>
+        <td>400</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section aria-labelledby="media-heading">
+  <h2 id="media-heading">Visit Ethiopia</h2>
+  <figure>
+    <img
+      src="images/Lalibela.jpg"
+      alt="Historic rock-hewn church carved into the stone in Lalibela, Ethiopia"
+      width="500"
+    >
+    <figcaption>
+      The historic rock-hewn churches of Lalibela, Ethiopia.
+    </figcaption>
+  </figure>
+  <h3>Lalibela Location</h3>
+  <iframe
+    src="https://www.google.com/maps?q=Lalibela,Ethiopia&output=embed"
+    title="Map showing the location of Lalibela, Ethiopia"
+    width="600"
+    height="450"
+    loading="lazy"
+  ></iframe>
+</section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Habesha Eatery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
