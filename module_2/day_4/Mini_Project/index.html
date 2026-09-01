@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Telecom Dashboard</title>
+  <meta
+    name="description"
+    content="A telecom account dashboard demonstrating CSS Grid and Flexbox."
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="page">
+<header class="header">
+  <nav class="navbar">
+    <div class="logo">
+      My Telecom
+    </div>
+    <div class="nav-actions">
+      <a href="#">Notifications</a>
+      <a href="#">Profile</a>
+    </div>
+  </nav>
+</header>
+
+<aside class="sidebar">
+  <nav aria-label="Dashboard navigation">
+
+    <a href="#">Dashboard</a>
+    <a href="#">My Services</a>
+    <a href="#">Payments</a>
+    <a href="#">Usage</a>
+    <a href="#">Support</a>
+
+  </nav>
+
+</aside>
+
+<main class="main">
+
+  <div class="toolbar">
+
+    <h1>Dashboard</h1>
+
+    <div class="toolbar-actions">
+      <button type="button">Refresh</button>
+      <button type="button">Download</button>
+    </div>
+
+  </div>
+
+  <section class="stats" aria-label="Account statistics">
+
+    <article class="stat-card">
+      <h2>Account Balance</h2>
+      <p>ETB 850</p>
+    </article>
+
+    <article class="stat-card">
+      <h2>Data Remaining</h2>
+      <p>12 GB</p>
+    </article>
+
+    <article class="stat-card">
+      <h2>Minutes</h2>
+      <p>350</p>
+    </article>
+
+    <article class="stat-card">
+      <h2>SMS</h2>
+      <p>120</p>
+    </article>
+
+  </section>
+
+  <section aria-labelledby="services-heading">
+
+    <h2 id="services-heading">
+      My Services
+    </h2>
+
+    <div class="services">
+      <article class="service-card">
+        <span class="badge">Active</span>
+        <h3>Mobile Package</h3>
+
+        <p>
+          Monthly voice and data package.
+        </p>
+
+      </article>
+      <article class="service-card">
+
+        <span class="badge">Active</span>
+
+        <h3>Internet</h3>
+
+        <p>
+          Home internet service.
+        </p>
+
+      </article>
+      <article class="service-card">
+
+        <span class="badge">New</span>
+
+        <h3>TeleBirr</h3>
+        <p>
+          Digital payment service.
+        </p>
+
+      </article>
+      <article class="service-card">
+
+        <span class="badge">Active</span>
+
+        <h3>Roaming</h3>
+
+        <p>
+          International roaming service.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+
+  <p>
+    &copy; 2026 My Telecom Dashboard
+  </p>
+
+</footer>
+  </div>
+
+</body>
+</html>
