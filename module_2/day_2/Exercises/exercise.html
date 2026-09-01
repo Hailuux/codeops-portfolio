@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethio Telecom Service Registration</title>
+</head>
+<body>
+      <!-- 1 -->
+  <header>
+    <h1>Ethio Telecom Service Registration</h1>
+  </header>
+  <section>
+    <h2>Register for Our Service</h2>
+<form action="/register" method="post">
+  <div>
+    <label for="name">Full Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+    >
+  </div>
+  <br>
+  <div>
+    <label for="email">Email Address:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+    >
+  </div>
+
+  <br>
+
+  <div>
+    <label for="phone">Phone Number:</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      placeholder="+251912345678"
+      pattern="\+251[0-9]{9}"
+      required
+    >
+  </div>
+
+  <br>
+
+  <div>
+    <label for="branch">Select Branch:</label>
+    <select id="branch" name="branch" required>
+      <option value="">-- Select a branch --</option>
+      <option value="bole">Bole</option>
+      <option value="kazanchis">Kazanchis</option>
+      <option value="piassa">Piassa</option>
+    </select>
+  </div>
+  <br>
+  <button type="submit">Register</button>
+</form>
+
+
+  </section>
+
+  <!-- 2 -->
+
+  <section>
+    <h2>Flight Schedule</h2>
+<table>
+  <caption>
+    Ethiopian Airlines Flight Schedule
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Flight</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Departs</th>
+      <th scope="col">Price ETB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ET301</td>
+      <td>Addis Ababa</td>
+      <td>Nairobi</td>
+      <td>08:00</td>
+      <td>15,000</td>
+    </tr>
+
+    <tr>
+      <td>ET302</td>
+      <td>Addis Ababa</td>
+      <td>Dubai</td>
+      <td>10:30</td>
+      <td>28,000</td>
+    </tr>
+
+    <tr>
+      <td>ET303</td>
+      <td>Addis Ababa</td>
+      <td>Cairo</td>
+      <td>13:00</td>
+      <td>20,000</td>
+    </tr>
+
+    <tr>
+      <td>ET304</td>
+      <td>Addis Ababa</td>
+      <td>London</td>
+      <td>18:00</td>
+      <td>45,000</td>
+    </tr>
+
+    <tr>
+      <td>ET305</td>
+      <td>Addis Ababa</td>
+      <td>Rome</td>
+      <td>21:00</td>
+      <td>40,000</td>
+    </tr>
+  </tbody>
+</table>
+
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2>Ethiopian Landmark</h2>
+<figure>
+    
+  <img
+    src="lalibela.jpg"
+    alt="Rock-hewn church of Lalibela"
+    width="500"
+  >
+  <figcaption>
+     Lalibela, Ethiopia.
+  </figcaption>
+</figure>
+
+<h2>Location Map</h2>
+<iframe
+  src="https://www.google.com/maps?q=Lalibela,Ethiopia&output=embed"
+  title="Map showing the location of Lalibela, Ethiopia"
+  width="600"
+  height="450"
+  loading="lazy"
+></iframe>
+
+  </section>
+
+  <!-- 4 -->
+
+  <section>
+    <h2>Accessibility Examples</h2>
+
+<!--
+  BEFORE:
+  <div onclick="submitForm()">Submit</div>
+-->
+  <button type="button">
+  Submit
+</button>
+
+<!--
+  AFTER:
+  A real button is used.
+
+  Why?
+  A button can be reached and activated using the keyboard
+  and is automatically understood as a button by screen readers.
+-->
+
+<button type="button">
+  Submit
+</button>
+
+
+<!--
+  BEFORE:
+  <input type="text">
+-->
+  <div>
+  <label for="username">Username:</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+  >
+</div>
+
+<!--
+  AFTER:
+  The input has a label connected using for and id.
+
+  Why?
+  Screen readers can tell the user what information
+  should be entered into the field.
+-->
+
+<div>
+  <label for="username">Username:</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+  >
+</div>
+
+<!--
+  BEFORE:
+  <img src="dish.jpg">
+-->
+  <img
+  src="injera.jpg"
+  alt="Traditional Ethiopian injera served with different stews"
+  width="400">
+<!--
+  AFTER:
+  The image has meaningful alternative text.
+
+  Why?
+  Screen readers can describe the image to users
+  who cannot see it  -->
+
+  </section>
+
+</body>
+</html>
