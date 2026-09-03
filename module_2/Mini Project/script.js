@@ -1,11 +1,3 @@
-// ============================================
-// BOLE WEATHER
-// ============================================
-
-
-// ============================================
-// APPLICATION STATE
-// ============================================
 
 const state = {
   currentCity: null,
@@ -25,11 +17,6 @@ const state = {
 
   suggestionsOpen: false
 };
-
-
-// ============================================
-// DOM ELEMENTS
-// ============================================
 
 const cityInput =
   document.getElementById('city-input');
@@ -74,9 +61,6 @@ const forecastContainer =
   document.getElementById('forecast-container');
 
 
-// ============================================
-// WEATHER ICON MAP
-// ============================================
 
 const weatherIcons = {
 
@@ -188,10 +172,6 @@ const weatherIcons = {
 };
 
 
-// ============================================
-// WEATHER CODE DECODER
-// ============================================
-
 function decodeWeatherCode(code) {
 
   return weatherIcons[code] || {
@@ -205,9 +185,6 @@ function decodeWeatherCode(code) {
 }
 
 
-// ============================================
-// GET CITY COORDINATES
-// ============================================
 
 async function getCoordinates(city) {
 
@@ -266,10 +243,6 @@ async function getCoordinates(city) {
 }
 
 
-// ============================================
-// GET CITY SEARCH SUGGESTIONS
-// ============================================
-
 async function getCitySuggestions(query) {
 
   const url =
@@ -297,12 +270,6 @@ async function getCitySuggestions(query) {
   return data.results || [];
 
 }
-
-
-// ============================================
-// GET WEATHER DATA
-// ============================================
-
 async function getWeather(
   latitude,
   longitude
@@ -346,10 +313,6 @@ async function getWeather(
 }
 
 
-// ============================================
-// LOAD WEATHER FOR CITY
-// ============================================
-
 async function loadWeatherForCity(city) {
 
   try {
@@ -367,7 +330,7 @@ async function loadWeatherForCity(city) {
         city.longitude
       );
 
-    // Update application state
+    
 
     state.currentCity =
       city;
@@ -375,7 +338,7 @@ async function loadWeatherForCity(city) {
     state.currentWeather =
       weatherData;
 
-    // Update the interface
+   
 
     displayWeather(
       city.name,
@@ -409,10 +372,6 @@ async function loadWeatherForCity(city) {
 
 }
 
-
-// ============================================
-// DISPLAY CURRENT WEATHER
-// ============================================
 
 function displayWeather(
   cityName,
@@ -459,9 +418,6 @@ function displayWeather(
 }
 
 
-// ============================================
-// DISPLAY 3-DAY FORECAST
-// ============================================
 
 function displayForecast(daily) {
 
@@ -534,10 +490,6 @@ function displayForecast(daily) {
 }
 
 
-// ============================================
-// SAVE FAVORITES TO LOCAL STORAGE
-// ============================================
-
 function persistFavorites() {
 
   localStorage.setItem(
@@ -549,10 +501,6 @@ function persistFavorites() {
 
 }
 
-
-// ============================================
-// RENDER FAVORITES
-// ============================================
 
 function renderFavorites() {
 
@@ -662,9 +610,6 @@ function renderFavorites() {
 }
 
 
-// ============================================
-// ADD FAVORITE
-// ============================================
 
 function addFavorite(cityName) {
 
@@ -689,9 +634,6 @@ function addFavorite(cityName) {
 }
 
 
-// ============================================
-// REMOVE FAVORITE
-// ============================================
 
 function removeFavorite(cityName) {
 
@@ -710,9 +652,6 @@ function removeFavorite(cityName) {
 }
 
 
-// ============================================
-// UPDATE FAVORITE BUTTON
-// ============================================
 
 function updateFavoriteButton() {
 
@@ -748,10 +687,6 @@ function updateFavoriteButton() {
 }
 
 
-// ============================================
-// HIDE FAVORITES
-// ============================================
-
 function hideFavorites() {
 
   state.favoritesOpen =
@@ -769,9 +704,6 @@ function hideFavorites() {
 }
 
 
-// ============================================
-// SHOW / HIDE FAVORITES
-// ============================================
 
 favoritesToggle.addEventListener(
   'click',
@@ -805,10 +737,6 @@ favoritesToggle.addEventListener(
 );
 
 
-// ============================================
-// DEBOUNCE
-// ============================================
-
 function debounce(
   fn,
   delay
@@ -831,9 +759,6 @@ function debounce(
 }
 
 
-// ============================================
-// SHOW SEARCH SUGGESTIONS
-// ============================================
 
 function showSuggestions(results) {
 
@@ -936,10 +861,6 @@ function showSuggestions(results) {
 }
 
 
-// ============================================
-// HIDE SEARCH SUGGESTIONS
-// ============================================
-
 function hideSuggestions() {
 
   state.suggestions =
@@ -957,10 +878,6 @@ function hideSuggestions() {
 
 }
 
-
-// ============================================
-// HANDLE SEARCH TYPING
-// ============================================
 
 const handleTyping =
   debounce(
@@ -1001,10 +918,6 @@ const handleTyping =
     300
   );
 
-
-// ============================================
-// MAIN SEARCH
-// ============================================
 
 async function handleSearch() {
 
@@ -1059,20 +972,10 @@ async function handleSearch() {
 
 }
 
-
-// ============================================
-// SEARCH BUTTON
-// ============================================
-
 searchBtn.addEventListener(
   'click',
   handleSearch
 );
-
-
-// ============================================
-// ENTER KEY SEARCH
-// ============================================
 
 cityInput.addEventListener(
   'keydown',
@@ -1090,9 +993,6 @@ cityInput.addEventListener(
 );
 
 
-// ============================================
-// SEARCH INPUT
-// ============================================
 
 cityInput.addEventListener(
   'input',
@@ -1107,11 +1007,6 @@ cityInput.addEventListener(
 
   }
 );
-
-
-// ============================================
-// CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
-// ============================================
 
 document.addEventListener(
   'click',
@@ -1151,9 +1046,6 @@ document.addEventListener(
 );
 
 
-// ============================================
-// SAVE CURRENT CITY TO FAVORITES
-// ============================================
 
 favBtn.addEventListener(
   'click',
@@ -1178,19 +1070,9 @@ favBtn.addEventListener(
   }
 );
 
-
-// ============================================
-// INITIALIZE FAVORITES
-// ============================================
-
 renderFavorites();
 
 updateFavoriteButton();
-
-
-// ============================================
-// INITIALIZE DEFAULT CITY
-// ============================================
 
 (async function initializeApp() {
 
