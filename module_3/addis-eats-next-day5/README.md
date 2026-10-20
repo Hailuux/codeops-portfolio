@@ -1,0 +1,101 @@
+# ADDIS EATS — Next.js Capstone (Day 5)
+
+Complete learning capstone migrated to Next.js App Router, continuing the Day 4 implementation. Includes five primary page routes (`/`, `/menu`, `/menu/[id]`, `/cart`, `/checkout`), nested layouts and special files, dish and order Route Handlers, a schema-validated checkout Server Action, cache revalidation, and ownership checks inside the cancellation action.
+
+## Requirements
+
+- Node.js 20.9+
+- npm
+
+## Setup
+
+```bash
+npm install
+cp .env.example .env.local
+```
+
+Set `SESSION_SECRET` in `.env.local` to a random secret of at least 32 characters. Never commit `.env.local`; never expose the secret through a `NEXT_PUBLIC_` variable.
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:3000`.
+
+## Production build and smoke test
+
+Run these commands from a clean clone or the extracted project folder:
+
+```bash
+npm ci
+npm run build
+npm run start
+```
+
+In a second terminal:
+
+```bash
+bash verify-production.sh
+```
+
+The smoke test verifies `/api/dishes`, that a missing dish returns `404`, and that invalid order data returns `422`. The script exits non-zero if either expected error status is wrong.
+
+### Build output record
+
+**Build status in the artifact-generation environment: NOT VERIFIED.** Dependency installation could not complete because the npm registry was not reachable within the execution window. No production build output is fabricated here. After `npm ci && npm run build`, paste the exact route table emitted by Next.js below and update `STRATEGY.md` so its markers match.
+
+```text
+PASTE EXACT `npm run build` ROUTE TABLE HERE
+```
+
+## Rendering and component boundaries
+
+- `STRATEGY.md` documents every route's expected rendering strategy and the Next.js build marker to confirm.
+- `BOUNDARY.md` lists the component/module execution side and why it belongs there.
+- The menu route uses ISR (`revalidate = 60`); dish details use `generateStaticParams`; checkout is dynamic because it reads `cookies()`.
+- The checkout API and Server Action use the shared schema in `lib/order-schema.js`.
+- `cancelOrder` verifies the session and order ownership inside the action. The UI is not the authorization boundary.
+
+## API examples
+
+```bash
+curl -i http://localhost:3000/api/dishes
+curl -i http://localhost:3000/api/dishes/1
+curl -i http://localhost:3000/api/dishes/999
+curl -i -X POST http://localhost:3000/api/orders \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Ab","email":"ab@example.com","address":"Bole, Addis Ababa","items":[{"id":"1","quantity":2}]}'
+```
+
+Valid orders return `201`; invalid data returns `422` with `fieldErrors`; unknown dishes return `404`.
+
+## GitHub: push and verify from a fresh clone
+
+I cannot push to your GitHub account or verify a fresh clone without repository access/credentials. After creating an empty GitHub repository, run:
+
+```bash
+git init
+git add .
+git commit -m "Complete ADDIS EATS Next.js capstone"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git push -u origin main
+```
+
+Then verify from a new folder:
+
+```bash
+ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git addis-eats-fresh-clone
+ cd addis-eats-fresh-clone
+ npm ci
+ cp .env.example .env.local
+ # set SESSION_SECRET in .env.local
+ npm run build
+ npm run start
+```
+
+Run `bash verify-production.sh` from another terminal. Do not commit real `.env.local` credentials.
+
+## Limitations
+
+This is an educational capstone: order storage is an in-memory `Map` and resets when the server restarts. The repository does not implement a login flow that issues signed session cookies. Connect a real authentication provider and persistent database before production use.
