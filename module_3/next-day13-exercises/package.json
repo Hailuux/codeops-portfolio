@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-day11-analytics-exercises",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test:csv": "node --experimental-strip-types scripts/test-csv.mjs",
+    "check:a11y-source": "node scripts/accessibility-source-check.mjs"
+  },
+  "dependencies": {
+    "next": "15.5.8",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.0.0"
+  }
+}
